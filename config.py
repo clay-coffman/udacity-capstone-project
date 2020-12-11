@@ -13,5 +13,5 @@ bearer_tokens = {
 
 class Config(object):
     FLASK_APP = os.getenv("FLASK_APP")
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.getenv("HEROKU_POSTGRESQL_YELLOW_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
