@@ -2,7 +2,7 @@ import os
 import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
-from api import create_app
+from app import create_app
 from models import setup_db, db_drop_and_create_all, Actor, Movie
 
 from config import bearer_tokens
