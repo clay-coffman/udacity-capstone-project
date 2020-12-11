@@ -39,6 +39,7 @@ Werkzeug = "==1.0.1"
 python-dotenv = "*"
 flask-migrate = "*"
 psycopg2 = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
