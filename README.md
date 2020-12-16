@@ -1,35 +1,40 @@
-# Coffee Shop Full Stack
+# Udacity Full-stack Dev Final Project
 
-## Full Stack Nano - IAM Final Project
+## Casting Agency API
 
-Udacity has decided to open a new digitally enabled cafe for students to order drinks, socialize, and study hard. But they need help setting up their menu experience.
+### Running Locally
 
-You have been called on to demonstrate your newly learned skills to create a full stack drink menu application. The application must:
+To run locally:
+- `cd` into the project root and then run `Pipenv install`. This should create the virtualenv and install all dependencies.
+- run `pipenv shell` to activate virtualenv
+- create `.env` file with `DATABASE_URL={connection_string_for_your_pg_db_instance}`
+- start server by running `./server.sh`
 
-1) Display graphics representing the ratios of ingredients in each drink.
-2) Allow public users to view drink names and graphics.
-3) Allow the shop baristas to see the recipe information.
-4) Allow the shop managers to create new drinks and edit existing drinks.
+## Review App
 
-## Tasks
+The application is currently running at the following URL:
 
-There are `@TODO` comments throughout the project. We recommend tackling the sections in order. Start by reading the READMEs in:
+https://frozen-sea-08523.herokuapp.com
 
-1. [`./backend/`](./backend/README.md)
-2. [`./frontend/`](./frontend/README.md)
+### API Endpoints
 
-## About the Stack
+For each resource (Actors, Movies) there is a respective CRUD endpoint with the required authorization enabled.
 
-We started the full stack application for you. It is desiged with some key functional areas:
+Eg., for Actors
+- `GET /actors`
+- `POST /actors`
+- `DELETE /actors`
+- `PATCH /actors`
 
-### Backend
+and so on for Movies as well.
 
-The `./backend` directory contains a partially completed Flask server with a pre-written SQLAlchemy module to simplify your data needs. You will need to complete the required endpoints, configure, and integrate Auth0 for authentication.
+## Auth
 
-[View the README.md within ./backend for more details.](./backend/README.md)
+There are tokens that are currently valid in the `config.py` file. You can use the Token for each role to make requests.
 
-### Frontend
+Eg., for `GET /actors`, the CURL request would look like:
 
-The `./frontend` directory contains a complete Ionic frontend to consume the data from the Flask server. You will only need to update the environment variables found within (./frontend/src/environment/environment.ts) to reflect the Auth0 configuration details set up for the backend app. 
-
-[View the README.md within ./frontend for more details.](./frontend/README.md)
+```curl --request GET \
+  --url https://frozen-sea-08523.herokuapp.com/actors \
+  --header 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjVZUjFOQTF4TGlCN0tiRTZxWmN4dyJ9.eyJpc3MiOiJodHRwczovL2Rldi1rY3J0ZzJnZy51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWZkMmJiNzQzODUxOGYwMDZmMmI5NWM1IiwiYXVkIjoiY2Fwc3RvbmUtcHJvamVjdC1hcGkiLCJpYXQiOjE2MDgwNzU3MDIsImV4cCI6MTYwODE2MjEwMiwiYXpwIjoiTVBTVUVLc3RoUE9KaHozRWw4a0RxVkJyYzU4YmFUUGQiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.Tf0kezZCM5MpBZoYHoO17EKZcLk-seKfJi8Cack0A23brDk-f9sseNavqtBjrVa1iq2XdXnqhiG2C3H0wzDHQE2Eb3RUyaOm5MxPRof7MtZZX8ymaPJH_-vSVIYNj26eYTF70w3a2rs3t3x6ohtptt9XPWiCb1hv5syQhpq792P-AkEZdMZzjvmkILa-ce_K8damiJwpVW11TWvcLUVki6tuTiA0k5jafCVpNlivm8M870bMB4ngjM-qW5U8AUcGEFhivnKiNu6bnGb6JN8kOdCtsdJCuexaM7ZtMLhp0JhAv17-9Jx1_EN9lkl14pdY5dibdJaZIiTvvO6hsm2ltA'
+```
