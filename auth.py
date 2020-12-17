@@ -11,7 +11,7 @@ API_AUDIENCE = "capstone-project-api"
 AUTH0_CLIENT_ID = "MPSUEKsthPOJhz3El8kDqVBrc58baTPd"
 AUTH0_CALLBACK_URL = "http://0.0.0.0:5000"
 
-## AuthError Exception
+# AuthError Exception
 """
 AuthError Exception
 A standardized way to communicate auth failure modes
@@ -24,7 +24,7 @@ class AuthError(Exception):
         self.status_code = status_code
 
 
-## Auth Header
+# Auth Header
 
 """
 implement get_token_auth_header() method
@@ -61,7 +61,7 @@ def get_token_auth_header():
 
     elif len(parts) == 1:
         raise AuthError(
-            {"error": "invalid_header", "description": "Token not found.",},
+            {"error": "invalid_header", "description": "Token not found.", },
             401,
         )
 
@@ -217,4 +217,3 @@ def requires_auth(permission=""):
         return wrapper
 
     return requires_auth_decorator
-

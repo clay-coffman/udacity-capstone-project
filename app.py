@@ -58,7 +58,7 @@ def create_app():
 
         return jsonify({"auth_url": url})
 
-    ## ROUTES
+    # ROUTES
     """
     GET /actors
     """
@@ -138,7 +138,8 @@ def create_app():
 
         actor.delete()
 
-        res = make_response(jsonify({"success": True, "delete": actor_id}), 200)
+        res = make_response(
+            jsonify({"success": True, "delete": actor_id}), 200)
 
         return res
 
@@ -221,7 +222,7 @@ def create_app():
 
         return jsonify({"success": True, "deleted": movie_id})
 
-    ## Error Handling
+    # Error Handling
     """
     Example error handling for unprocessable entity
     """
@@ -239,7 +240,7 @@ def create_app():
     implement error handlers using the @app.errorhandler(error) decorator
         each error handler should return (with approprate messages):
                  jsonify({
-                        "success": False, 
+                        "success": False,
                         "error": 404,
                         "message": "resource not found"
                         }), 404
@@ -247,7 +248,7 @@ def create_app():
     """
 
     """
-    error handler should conform to general task above 
+    error handler should conform to general task above
     """
 
     @app.errorhandler(404)
@@ -265,7 +266,7 @@ def create_app():
 
     """
     implement error handler for AuthError
-    error handler should conform to general task above 
+    error handler should conform to general task above
     """
 
     # @app.errorhandler(403)
@@ -291,4 +292,3 @@ app = create_app()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
-

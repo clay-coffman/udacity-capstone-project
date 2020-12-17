@@ -49,7 +49,8 @@ def create_test_records():
 """
 movies_actors join table (not sure if this is needed)
 """
-# this is an association table for actors and movies... capturing 'roles' that actors have held in specific movies
+# this is an association table for actors and movies... capturing 'roles'
+# that actors have held in specific movies
 Role = db.Table(
     "roles",
     db.Model.metadata,
