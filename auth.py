@@ -3,13 +3,14 @@ from flask import request, _request_ctx_stack, abort
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
+from config import (
+    AUTH0_CALLBACK_URL,
+    AUTH0_CLIENT_ID,
+    AUTH0_DOMAIN,
+    ALGORITHMS,
+    API_AUDIENCE,
+)
 
-
-AUTH0_DOMAIN = "dev-kcrtg2gg.us.auth0.com"
-ALGORITHMS = ["RS256"]
-API_AUDIENCE = "capstone-project-api"
-AUTH0_CLIENT_ID = "MPSUEKsthPOJhz3El8kDqVBrc58baTPd"
-AUTH0_CALLBACK_URL = "http://0.0.0.0:5000"
 
 # AuthError Exception
 """
@@ -61,7 +62,7 @@ def get_token_auth_header():
 
     elif len(parts) == 1:
         raise AuthError(
-            {"error": "invalid_header", "description": "Token not found.", },
+            {"error": "invalid_header", "description": "Token not found.",},
             401,
         )
 

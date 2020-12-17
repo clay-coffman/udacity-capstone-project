@@ -5,15 +5,15 @@ import json
 from flask_cors import CORS
 
 from models import db_drop_and_create_all, setup_db, Movie, Actor
-from auth import (
-    AuthError,
-    requires_auth,
+from auth import AuthError, requires_auth
+
+from config import (
+    Config,
     AUTH0_DOMAIN,
     AUTH0_CLIENT_ID,
     AUTH0_CALLBACK_URL,
     API_AUDIENCE,
 )
-from config import Config
 
 
 def create_app():
@@ -138,8 +138,7 @@ def create_app():
 
         actor.delete()
 
-        res = make_response(
-            jsonify({"success": True, "delete": actor_id}), 200)
+        res = make_response(jsonify({"success": True, "delete": actor_id}), 200)
 
         return res
 
